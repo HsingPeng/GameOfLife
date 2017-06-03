@@ -27,7 +27,15 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        getTargetTimesMartix();
+        //getTargetTimesMartix();
+
+        startGUI();
     }
 
+    private static void startGUI() {
+        int[][] matrix = Init.initFromFile(Config.INPUT_FILE_NAME);
+
+        GUI gui = new GUI();
+        gui.setmMatrix(matrix);
+    }
 }
