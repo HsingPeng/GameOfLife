@@ -43,6 +43,16 @@ public class Cell {
 
     }
 
+    public static int[][] nextMartix(int[][] martix,int n){
+        int [][] targetMartix = new int[n][n];
+        for (int i = 0;i < n ;i++){
+            for (int j = 0;j < n;j++){
+                targetMartix[i][j] = nextState(martix,i,j,n);
+            }
+        }
+        return targetMartix;
+    }
+
     private static boolean validateArrayOutofBounds(int x,int y,int n){
         boolean flag = false;
         if(x >= 0 && y >= 0 && x < n && y < n){

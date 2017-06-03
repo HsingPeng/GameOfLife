@@ -61,4 +61,19 @@ public class TestCell {
         v = 0;
         assertEquals(v, Cell.nextState(matrix, x, y, n));
     }
+
+    @Test
+    public void shouldReturnChangeTargetMarticx(){
+        int[][] matrix = {{0, 1, 0}, {0, 1, 0}, {0, 1, 0}};
+        int[][] valueMatrix = {{0, 0, 0}, {1, 1, 1}, {0, 0, 0}};
+        int [][] getNextMartix = Cell.nextMartix(matrix,3);
+        for (int i = 0;i < 3 ;i++){
+            for (int j = 0;j < 3;j++){
+                assertEquals(valueMatrix[i][j], getNextMartix[i][j]);
+            }
+
+        }
+
+    }
+
 }
