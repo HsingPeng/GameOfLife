@@ -4,8 +4,9 @@ package com.github.yongandpeng.gameoflife;
  * Created by bboxh on 2017/6/3.
  */
 public class Cell {
-    public static void nextState(int[][] matrix, int x, int y, int n) {
+    public static int nextState(int[][] matrix, int x, int y, int n) {
         int liveCell = 0;
+        int value = matrix[x][y];
         if (validateArrayOutofBounds(x-1, y-1, n) && matrix[x-1][y-1] == 1 ) {
             liveCell++;
         }
@@ -31,10 +32,11 @@ public class Cell {
             liveCell++;
         }
         if(liveCell >= 3){
-            matrix[x][y] = 1;
+            value = 1;
         }else if(liveCell < 2){
-            matrix[x][y] = 0;
+            value = 0;
         }
+        return value;
     }
 
     public static void main(String[] args) {

@@ -53,7 +53,7 @@ public class TestCell {
 
         x = 1;
         y = 2;
-        v = 0;
+        v = 1;
         assertEquals(v, Cell.nextState(matrix, x, y, n));
 
         x = 2;
