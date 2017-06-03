@@ -3,8 +3,8 @@ package com.github.yongandpeng.gameoflife;
 /**
  * Created by bboxh on 2017/6/3.
  */
-public class Cell {
-    public static int nextState(int[][] matrix, int x, int y, int n) {
+public class TransStatus {
+    public static int nextStatus(int[][] matrix, int x, int y, int n) {
         int liveCell = 0;
         int value = matrix[x][y];
         if (validateArrayOutofBounds(x-1, y-1, n) && matrix[x-1][y-1] == 1 ) {
@@ -47,7 +47,7 @@ public class Cell {
         int [][] targetMartix = new int[n][n];
         for (int i = 0;i < n ;i++){
             for (int j = 0;j < n;j++){
-                targetMartix[i][j] = nextState(martix,i,j,n);
+                targetMartix[i][j] = nextStatus(martix,i,j,n);
             }
         }
         return targetMartix;
