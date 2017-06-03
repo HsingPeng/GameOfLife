@@ -31,9 +31,9 @@ public class TransStatus {
         if (validateArrayOutofBounds(x+1, y+1, n)  && matrix[x+1][y+1] == 1 ){
             liveCell++;
         }
-        if(liveCell >= 3){
+        if(liveCell == 3){
             value = 1;
-        }else if(liveCell < 2){
+        }else if(liveCell < 2 || liveCell > 3){
             value = 0;
         }
         return value;
