@@ -6,19 +6,19 @@ package com.github.yongandpeng.gameoflife;
 public class Cell {
     public static void nextState(int[][] matrix, int x, int y, int n) {
         int liveCell = 0;
-        if (validateArrayOutofBounds(x-1, y, n) && matrix[x-1][y] == 1 ) {
+        if (validateArrayOutofBounds(x-1, y-1, n) && matrix[x-1][y-1] == 1 ) {
             liveCell++;
         }
-        if (validateArrayOutofBounds(x+1, y, n) && matrix[x+1][y] == 1 ){
-            liveCell++;
-        }
-        if (validateArrayOutofBounds(x-1, y-1, n)  && matrix[x-1][y-1] == 1 ){
-            liveCell++;
-        }
-        if (validateArrayOutofBounds(x, y-1, n)  && matrix[x][y-1] == 1 ){
+        if (validateArrayOutofBounds(x, y-1, n) && matrix[x][y-1] == 1 ){
             liveCell++;
         }
         if (validateArrayOutofBounds(x+1, y-1, n)  && matrix[x+1][y-1] == 1 ){
+            liveCell++;
+        }
+        if (validateArrayOutofBounds(x-1, y, n)  && matrix[x-1][y] == 1 ){
+            liveCell++;
+        }
+        if (validateArrayOutofBounds(x+1, y, n)  && matrix[x+1][y] == 1 ){
             liveCell++;
         }
         if (validateArrayOutofBounds(x-1, y+1, n)  && matrix[x-1][y+1] == 1 ){
