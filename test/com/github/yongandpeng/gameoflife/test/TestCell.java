@@ -71,4 +71,20 @@ public class TestCell {
         assertArrayEquals(valueMatrix, getNextMartix);
     }
 
+    @Test
+    public void shouldReturnChangeTargetMarticxWith4x4(){
+        int[][] matrix = {{0, 1, 1, 0}, {0, 1, 1, 0}, {0, 1, 1, 0} , {0, 1, 1, 0}};
+        int[][] valueMatrix = {{0, 1, 1, 0}, {1, 0 , 0, 1}, {1, 0, 0, 1}, {0, 1, 1, 0}};
+        int [][] getNextMartix = TransStatus.nextMartix(matrix,4);
+        assertArrayEquals(valueMatrix, getNextMartix);
+    }
+
+    @Test
+    public void shouldReturnChangeTargetMarticxWith5x5(){
+        int[][] matrix = {{1, 0, 1, 0, 1}, {1, 0, 1, 0, 1}, {0, 1, 0, 1, 0} , {1, 0, 1, 0, 1}, {1, 0, 1, 0, 1}};
+        int[][] valueMatrix = {{0, 0, 0, 0, 0}, {1, 0 , 1, 0, 1}, {1, 0, 0, 0, 1}, {1, 0 , 1, 0, 1}, {0, 0, 0, 0, 0}};
+        int [][] getNextMartix = TransStatus.nextMartix(matrix,5);
+        assertArrayEquals(valueMatrix, getNextMartix);
+    }
+
 }
