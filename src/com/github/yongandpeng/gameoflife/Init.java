@@ -29,7 +29,7 @@ public class Init {
         for(int i=0; i < n; i++) {
             String[] lineSplitStr = list.get(i).split("\\s+");
             for(int j=0; j < n; j++) {
-                matrix[i][j] = Integer.parseInt(lineSplitStr[j]);
+                matrix[j][i] = Integer.parseInt(lineSplitStr[j]);
             }
         }
         return matrix;
