@@ -71,9 +71,7 @@ public class TestCell {
             for (int j = 0;j < 3;j++){
                 assertEquals(valueMatrix[i][j], getNextMartix[i][j]);
             }
-
         }
-
     }
 
 }
