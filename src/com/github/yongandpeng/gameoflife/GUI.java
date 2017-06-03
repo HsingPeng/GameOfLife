@@ -15,9 +15,12 @@ public class GUI extends JFrame {
     private JButton buttonStart;
     private GUIMainPanel japnelMain;
     private JPanel jpanelBottom;
+    private JPanel jpanelTop;
 
     private int[][] mMatrix;
     private int n = 3;
+    private JTextField jTextFieldSpeed;
+    private JTextField jTextFieldTime;
 
     public GUI() {
         int width = Config.SCALE * n > 800 ? Config.SCALE * n : 800;
@@ -39,6 +42,9 @@ public class GUI extends JFrame {
             }
         });
         buttonStart.setText("开始");
+
+        jTextFieldSpeed.setText("speed");
+
     }
 
     public void setmMatrix(int[][] mMatrix) {
@@ -46,7 +52,7 @@ public class GUI extends JFrame {
     }
 
     public void strat() {
-        new PaintThread(japnelMain).start();
+        new PaintThread(japnelMain, jTextFieldSpeed).start();
     }
 
     public static void main(String[] args) {
@@ -75,6 +81,15 @@ public class GUI extends JFrame {
         jpanelRoot.add(panel1, BorderLayout.CENTER);
         jpanelBottom = new JPanel();
         jpanelBottom.setLayout(new BorderLayout(0, 0));
+        jpanelTop = new JPanel();
+        jpanelTop.setLayout(new CardLayout(0, 0));
+
+        jTextFieldSpeed = new JTextField();
+        jpanelTop.add(jTextFieldSpeed);
+        jTextFieldTime = new JTextField();
+        jpanelTop.add(jTextFieldTime);
+
+        panel1.add(jpanelTop, BorderLayout.NORTH);
         panel1.add(jpanelBottom, BorderLayout.SOUTH);
         buttonStart = new JButton();
         buttonStart.setText("Button");
@@ -94,21 +109,32 @@ public class GUI extends JFrame {
 
 class PaintThread extends Thread{
 
+    private final JTextField mJTextFieldSpeed;
     GUIMainPanel mJapnelMain;
 
-    public PaintThread(GUIMainPanel japnelMain) {
+    public PaintThread(GUIMainPanel japnelMain,JTextField jTextFieldSpeed) {
         mJapnelMain = japnelMain;
+        mJTextFieldSpeed = jTextFieldSpeed;
     }
 
     public void run(){
         while(true){
             int[][] matrix = mJapnelMain.getMatrix();
 
+            int speed = 400;
+
+            String speedStr = mJTextFieldSpeed.getText();
+            try {
+                speed = Integer.parseInt(speedStr);
+            } catch (Exception e) {
+
+            }
+
             matrix = TransStatus.nextMartix(matrix, matrix.length);
             mJapnelMain.setMatrix(matrix);
             mJapnelMain.repaint();
             try {
-                Thread.sleep(400);
+                Thread.sleep(speed);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
